@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayushi Jha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ayushi Jha, Senior Technical Writer in Bengaluru. 8 years of API, integration and product documentation, content strategy and AI-assisted docs.">
+<meta property="og:title" content="Ayushi Jha · Senior Technical Writer">
+<meta property="og:description" content="API and integration documentation, content strategy, and AI-assisted docs. Bengaluru, India.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5BD3'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='white'%3EAJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a documentation site. Sticky "On this page" rail on the left, one reading column, career written as release notes. */
+:root {
+  --paper: #F5F7FA;
+  --surface: #FFFFFF;
+  --ink: #17202E;
+  --muted: #586273;
+  --rule: #DCE1E8;
+  --accent: #2F5BD3;
+  --accent-soft: #E7EDFC;
+  --mark: #FFE7A3;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E131A; --surface: #151C26; --ink: #E6EAF0; --muted: #9AA5B6; --rule: #253041;
+    --accent: #8EAEFF; --accent-soft: #1C2741; --mark: #5A4A16; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E131A; --surface: #151C26; --ink: #E6EAF0; --muted: #9AA5B6; --rule: #253041;
+  --accent: #8EAEFF; --accent-soft: #1C2741; --mark: #5A4A16; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 18px/1.65 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; letter-spacing: -0.015em; }
+p { margin: 0; }
+mark { background: var(--mark); color: inherit; padding: 0 3px; border-radius: 3px; }
+.mono { font-family: var(--mono); }
+.label { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.shell { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 64px; padding-block: 40px 80px; }
+
+/* left rail */
+.rail { position: sticky; top: 32px; align-self: start; display: flex; flex-direction: column; gap: 28px; font-family: var(--display); }
+.monogram { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; color: var(--ink); text-decoration: none; }
+.monogram span { width: 32px; height: 32px; border-radius: 8px; background: var(--accent); color: var(--surface); display: grid; place-items: center; font: 700 14px var(--body); }
+.toc { display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--rule); }
+.toc a { color: var(--muted); text-decoration: none; font-size: 14px; padding: 5px 0 5px 14px; margin-left: -1px; border-left: 2px solid transparent; }
+.toc a:hover { color: var(--ink); }
+.toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+.rail-note { font: 400 12.5px/1.5 var(--mono); color: var(--muted); }
+
+/* main column */
+main { min-width: 0; display: flex; flex-direction: column; gap: 72px; max-width: 760px; }
+section { display: flex; flex-direction: column; gap: 20px; }
+h2 { font-size: 28px; font-weight: 700; display: flex; align-items: baseline; gap: 10px; }
+h2 .hash { color: var(--rule); font-weight: 600; text-decoration: none; }
+h2:hover .hash { color: var(--accent); }
+
+.crumbs { font: 400 13px var(--mono); color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.crumbs b { color: var(--ink); font-weight: 500; }
+.hero { gap: 22px; }
+.hero h1 { font-size: clamp(44px, 7vw, 72px); font-weight: 800; letter-spacing: -0.035em; }
+.role { font: 600 clamp(19px, 2.4vw, 23px)/1.3 var(--display); color: var(--accent); }
+.lead { font-size: 21px; line-height: 1.55; max-width: 36ch; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 10px 22px; font: 400 14px var(--display); color: var(--muted); align-items: center; }
+.meta-row a { font-weight: 600; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #2E9E6A; display: inline-block; margin-right: 6px; }
+
+.callout { background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 16px 20px; font-size: 17px; }
+.callout .label { color: var(--accent); display: block; margin-bottom: 4px; }
+
+/* impact */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.stat { padding: 20px 16px 20px 0; display: flex; flex-direction: column; gap: 4px; }
+.stat + .stat { padding-left: 20px; border-left: 1px solid var(--rule); }
+.stat strong { font: 800 40px/1 var(--display); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.stat span { font: 400 14px/1.4 var(--display); color: var(--muted); }
+.source { font: 400 13px var(--mono); color: var(--muted); }
+
+/* project */
+.project { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+.project-head { padding: 24px 26px 18px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--rule); }
+.project-head h3 { font-size: 24px; font-weight: 700; }
+.project-body { padding: 22px 26px 26px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
+.feature { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.feature h4 { margin: 0; font: 600 15px/1.35 var(--display); }
+.feature p { font-size: 16px; color: var(--muted); line-height: 1.55; }
+
+/* release notes */
+.log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.entry { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding: 26px 0; border-top: 1px solid var(--rule); }
+.entry:last-child { border-bottom: 1px solid var(--rule); }
+.when { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.tag { font: 500 12px/1 var(--mono); padding: 6px 8px; border-radius: 6px; border: 1px solid var(--rule); color: var(--muted); background: var(--surface); white-space: nowrap; }
+.tag.now { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+.when small { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.what { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.what h3 { font-size: 21px; font-weight: 700; }
+.what h3 em { font-style: normal; color: var(--muted); font-weight: 500; }
+.what ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 17px; }
+.what li::marker { color: var(--accent); }
+.kind { font: 500 11.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 32px; }
+.skillset { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.skillset h3 { font-size: 16px; font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 400 14px/1 var(--display); padding: 8px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--rule); }
+
+/* certifications */
+.certs { width: 100%; border-collapse: collapse; font-family: var(--display); font-size: 15.5px; }
+.certs th { text-align: left; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 0 12px 10px 0; border-bottom: 1px solid var(--rule); }
+.certs td { padding: 13px 12px 13px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.certs td:last-child { font-family: var(--mono); font-size: 13.5px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.table-wrap { overflow-x: auto; }
+
+/* contact */
+.contact { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 34px 32px; display: flex; flex-direction: column; gap: 18px; }
+.contact h2 { color: var(--paper); }
+.contact p { font-size: 19px; max-width: 40ch; }
+.contact-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.email { font: 500 16px var(--mono); background: color-mix(in srgb, var(--paper) 10%, transparent); padding: 11px 14px; border-radius: 10px; user-select: all; word-break: break-all; }
+.btn { font: 600 15px var(--display); border: 0; border-radius: 10px; padding: 12px 16px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn.primary { background: var(--accent); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #0E131A; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0E131A; } }
+.btn.ghost { background: transparent; color: var(--paper); border: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); }
+
+footer { font: 400 13px var(--mono); color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--rule); padding-top: 18px; }
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: 1fr; gap: 0; padding-block: 24px 56px; }
+  .rail { position: static; margin-bottom: 36px; }
+  .toc, .rail-note { display: none; }
+  main { gap: 56px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .project-body, .skills { grid-template-columns: 1fr; }
+  .entry { grid-template-columns: 1fr; gap: 12px; }
+  .when { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .lead { font-size: 19px; }
+  .contact { padding: 26px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail" aria-label="Page navigation">
+    <a class="monogram" href="#top"><span>AJ</span>Ayushi Jha</a>
+    <nav class="toc" id="toc">
+      <a href="#overview">Overview</a>
+      <a href="#impact">Impact</a>
+      <a href="#logidoc">Featured project</a>
+      <a href="#experience">Release notes</a>
+      <a href="#skills">Skills and tools</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="rail-note">Last updated<br>October 2026</p>
+  </aside>
+
+  <main id="top">
+    <section class="hero" id="overview">
+      <div class="crumbs"><span>Home</span><span>/</span><b>Overview</b></div>
+      <h1>Ayushi Jha</h1>
+      <p class="role">Senior Technical Writer</p>
+      <p class="lead">For 8 years I have turned APIs, integrations and enterprise workflows into documentation that people can <mark>actually follow</mark>.</p>
+      <div class="meta-row">
+        <span><span class="dot" aria-hidden="true"></span>Senior Technical Writer at Fyno</span>
+        <span>Bengaluru, India</span>
+        <a href="#contact">Get in touch</a>
+      </div>
+      <p class="callout"><span class="label">In short</span>I work with product, engineering and customer success teams to write API guides, integration docs and onboarding content, and I set up the standards that keep docs accurate as products change. Lately that includes building AI into how docs get written, found and translated.</p>
+    </section>
+
+    <section id="impact" aria-labelledby="impact-h">
+      <h2 id="impact-h"><a class="hash" href="#impact" aria-label="Link to Impact">#</a>Impact</h2>
+      <div class="stats">
+        <div class="stat"><strong>35%</strong><span>faster developer onboarding</span></div>
+        <div class="stat"><strong>50%</strong><span>less time to turn docs around</span></div>
+        <div class="stat"><strong>40%</strong><span>more engagement with content</span></div>
+        <div class="stat"><strong>5</strong><span>languages served from one source</span></div>
+      </div>
+      <p class="source">Results from LogiDoc.AI, Oracle Logistics Cloud, 2023 to 2025</p>
+    </section>
+
+    <section id="logidoc" aria-labelledby="logidoc-h">
+      <h2 id="logidoc-h"><a class="hash" href="#logidoc" aria-label="Link to Featured project">#</a>Featured project</h2>
+      <article class="project">
+        <div class="project-head">
+          <span class="label">Internal innovation project · Oracle Logistics Cloud · 2023 to 2025</span>
+          <h3>LogiDoc.AI: AI-assisted documentation for logistics APIs</h3>
+          <p>I designed and led an AI-assisted documentation platform for Oracle Logistics Cloud APIs, working with product managers, UX writers and engineers across India, North America and EMEA.</p>
+        </div>
+        <div class="project-body">
+          <div class="feature"><h4>AI writing workflows</h4><p>Generative AI (Vertex AI and OpenAI) drafted SDK examples, parameter definitions and onboarding guides based on how the APIs were used.</p></div>
+          <div class="feature"><h4>Try-it API playground</h4><p>Swagger UI with mock data, so developers could test APIs like Order Fulfillment and Shipment Tracking without a full backend.</p></div>
+          <div class="feature"><h4>Search that finds things</h4><p>A React interface with Algolia search and clear information architecture, which lifted content engagement by 40%.</p></div>
+          <div class="feature"><h4>Five languages, one tone</h4><p>Translation pipelines that kept terminology consistent, plus video tutorials and visual workflows alongside the written docs.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-h">
+      <h2 id="experience-h"><a class="hash" href="#experience" aria-label="Link to Release notes">#</a>Release notes</h2>
+      <p>My career, newest release first.</p>
+      <ol class="log">
+        <li class="entry">
+          <div class="when"><span class="tag now">Dec 2025 to now</span><small>Bengaluru</small></div>
+          <div class="what">
+            <span class="kind">Current</span>
+            <h3>Senior Technical Writer <em>at Fyno</em></h3>
+            <ul>
+              <li>Write the docs partners use to integrate: APIs, webhooks and workflows, made simple enough for faster onboarding and self-serve troubleshooting.</li>
+              <li>Work with partner engineers to validate configurations, capture edge cases and close gaps in integrations.</li>
+              <li>Drive content strategy that strengthens self-service support and cuts repeat support requests.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when"><span class="tag">Apr 2024 to Dec 2025</span><small>Bengaluru</small></div>
+          <div class="what">
+            <span class="kind">Promotion</span>
+            <h3>Senior Technical Writer <em>at Oracle</em></h3>
+            <ul>
+              <li>Documented how Oracle WMS connects to enterprise networks: APIs, authentication, firewall setup and data routing across on-premises and cloud systems.</li>
+              <li>Turned complex network and integration architectures into clear guides for global customers.</li>
+              <li>Set documentation standards and review steps for customer-facing integration content, working in agile teams with Swagger/OpenAPI, Markdown, Git and CI/CD.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when"><span class="tag">Jun 2021 to Dec 2025</span><small>Alongside writing</small></div>
+          <div class="what">
+            <span class="kind">Video</span>
+            <h3>Video Coordinator <em>at Oracle</em></h3>
+            <ul>
+              <li>Produced product videos for internal demos and the Oracle WMS YouTube channel, plus executive-facing product demonstrations.</li>
+              <li>Ran video for live conferences and pre-recorded productions, working with subject matter experts on each demo.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when"><span class="tag">Apr 2021 to Apr 2024</span><small>Bengaluru</small></div>
+          <div class="what">
+            <span class="kind">Role</span>
+            <h3>Technical Writer, Contributor 2 <em>at Oracle</em></h3>
+            <ul>
+              <li>Wrote 60% of all end-user manuals for 15 products, including phones and tablets.</li>
+              <li>Drafted white papers and product guides, and set content standards for quality, accessibility and consistency.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="when"><span class="tag">Feb 2018 to Apr 2021</span><small>Bengaluru</small></div>
+          <div class="what">
+            <span class="kind">First release</span>
+            <h3>Information Developer <em>at E2open</em></h3>
+            <ul>
+              <li>Wrote the full user guide for each quarterly product release on my own.</li>
+              <li>Created how-to guides, instruction manuals, onboarding content and training resources.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-h">
+      <h2 id="skills-h"><a class="hash" href="#skills" aria-label="Link to Skills and tools">#</a>Skills and tools</h2>
+      <div class="skills">
+        <div class="skillset"><h3>Writing</h3><div class="chips"><span class="chip">API documentation</span><span class="chip">Integration guides</span><span class="chip">Release notes</span><span class="chip">User guides</span><span class="chip">White papers</span><span class="chip">Onboarding content</span></div></div>
+        <div class="skillset"><h3>Content strategy</h3><div class="chips"><span class="chip">Information architecture</span><span class="chip">Content governance</span><span class="chip">Style standards</span><span class="chip">Self-service support</span><span class="chip">Multilingual delivery</span></div></div>
+        <div class="skillset"><h3>Tools</h3><div class="chips"><span class="chip mono">Swagger / OpenAPI</span><span class="chip mono">Markdown</span><span class="chip mono">XML</span><span class="chip mono">Git</span><span class="chip mono">CI/CD</span><span class="chip mono">Algolia</span><span class="chip mono">Vertex AI</span><span class="chip mono">OpenAI</span></div></div>
+        <div class="skillset"><h3>Ways of working</h3><div class="chips"><span class="chip">Agile and Scrum</span><span class="chip">SME interviews</span><span class="chip">Stakeholder alignment</span><span class="chip">Mentoring</span><span class="chip">Video production</span></div></div>
+      </div>
+    </section>
+
+    <section id="certifications" aria-labelledby="certs-h">
+      <h2 id="certs-h"><a class="hash" href="#certifications" aria-label="Link to Certifications">#</a>Certifications</h2>
+      <div class="table-wrap">
+        <table class="certs">
+          <thead><tr><th scope="col">Certification</th><th scope="col">Earned</th></tr></thead>
+          <tbody>
+            <tr><td>Professional Scrum Product Owner</td><td>May 2025</td></tr>
+            <tr><td>Fundamentals of Project Management</td><td>Apr 2024</td></tr>
+            <tr><td>Professional Scrum Master I (PSM I)</td><td>Jun 2023</td></tr>
+            <tr><td>Android Development</td><td>May 2017</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Let's talk</h2>
+      <p>Open to conversations about technical writing, documentation strategy and AI in docs.</p>
+      <div class="contact-row">
+        <span class="email" id="email">er.ayushi.jha@gmail.com</span>
+        <button class="btn primary" id="copyBtn" type="button">Copy email</button>
+        <a class="btn ghost" href="https://github.com/Ayushijha04" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="label" id="copyStatus" aria-live="polite" style="color: inherit; opacity: .75; min-height: 1.4em;"></p>
+    </section>
+
+    <footer><span>© 2026 Ayushi Jha</span><span>Written and maintained like good docs.</span></footer>
+  </main>
+</div>
+
+<script>
+  // Copy email
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+    const text = document.getElementById("email").textContent.trim();
+    const status = document.getElementById("copyStatus");
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = "Email copied";
+    } catch (_) {
+      const range = document.createRange();
+      range.selectNodeContents(document.getElementById("email"));
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      status.textContent = "Email selected. Press Ctrl+C or Cmd+C to copy.";
+    }
+  });
+
+  // Highlight the current section in "On this page"
+  const links = [...document.querySelectorAll("#toc a")];
+  const byId = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          links.forEach((a) => a.classList.remove("active"));
+          byId.get(e.target.id)?.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    document.querySelectorAll("main section[id]").forEach((s) => io.observe(s));
+  }
+  links[0]?.classList.add("active");
+</script>
+</body>
+</html>
